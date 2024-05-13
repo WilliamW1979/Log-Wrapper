@@ -3,25 +3,24 @@ Log Wrapper<br><br>
 <p>This log wrapper is simple to use and makes logging events easier. I got tired of rewriting code to make logs, so I made this to make my life easier.</p>
 <p>If you are programming sockets, logging what you send and what you recieve helps with finding errors and problems you won't generally see using the debugger. If my program requires logging events like server, I will create a class for the general logging of events. A second class though I will create for debugging problem. I will use a define to enable a second logging class / file for the events that normal users would not need. For instance</p>
 <pre>
-  #ifdef DEBUGLOG
-    Debug("Data to send out!");
-  #endif
+#ifdef DEBUGLOG
+   Debug("Data to send out!");
+#endif
 </pre>
 
 <p>This way to disable the code, you just comment out (// in front) of the <pre>#define DEBUGLOG</pre> and you disable the code that helps you find errors without having to remove anything. A simple trick to help you know what data is going through sockets and anything else the debugger won't help you with.</p>
 <p>Now this log wrapper doesn't have levels in it because I wrote it 10 to 15 years ago, it wasn't something I was thinking about at the time. I might add it later if people want it.</p>
 <p>To use this, all you need to do is declare your variable, open it, and then start logging. Don't forget to close it when you are done.</p>
-<pre>
-  LOG Log("Log File.log");
-  Log.open();
+<pre>LOG Log("Log File.log");
+Log.open();
 
-  ...
+...
 
-    Log.Log("Data to log");
+Log.Log("Data to log");
 
-  ...
+...
 
-    Log.close();
+Log.close();
 </pre>
 
 <p>Now to go over all the functions and what they do.</p>
